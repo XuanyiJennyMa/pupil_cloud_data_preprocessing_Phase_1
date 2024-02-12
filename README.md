@@ -11,4 +11,4 @@ The eye-tracker we are using is [Neon][3].
 
 Detailed explanation of each script and how to adapt it according to your our research purposes can be found in each .py file. 
 
-If you have any questions or would like to leave any comments and suggetions, please feel free to contact Xuanyi Ma via [Xuanyi.Ma@glasgow.ac.uk](mailto:Xuanyi.Ma@glasgow.ac.uk).
+If you have any questions or would like to leave any comments and suggetions (you are more than welcome to do so), please feel free to contact Xuanyi Ma via [Xuanyi.Ma@glasgow.ac.uk](mailto:Xuanyi.Ma@glasgow.ac.uk).
