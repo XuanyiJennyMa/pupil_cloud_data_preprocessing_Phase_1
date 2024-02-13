@@ -23,18 +23,22 @@ extract_name = lambda name: name.split(".jpeg")[0]
 
 
 
-# This function is to extract the information of
+# This function is to extract the information of each referencec picture and then save it in a dictionary with the reference picure name as the key. 
 def extract_ref_pics(path):
-    all_ref_pic = os.listdir(path)
-    ref_pic_dict = {}
-    for pic in all_ref_pic:
-        reference_image = cv2.imread(f"{path}/{pic}")
-        reference_image = cv2.cvtColor(reference_image, cv2.COLOR_BGR2RGB)
-        ref_pic_dict[extract_name(pic)] = reference_image
+    all_ref_pic = os.listdir(path) # Get all the referenece files in the folder
+    ref_pic_dict = {} # create an empty dictionary
+    for pic in all_ref_pic: 
+        # Read and extract the information of each referencec picture
+        reference_image = cv2.imread(f"{path}/{pic}") # Original code can be found in Pupil Labs' script as indicated above.
+        reference_image = cv2.cvtColor(reference_image, cv2.COLOR_BGR2RGB) # Original code can be found in Pupil Labs' script as indicated above.
+        # Save the information of each referencec picture in a dictionary with the reference picure name as the key
+        ref_pic_dict[extract_name(pic)] = reference_image 
     return ref_pic_dict
 
+# Run the above function with all the reference pictures in the set-up folder
 reference_picture = extract_ref_pics(path_to_reference_image)     
 
+# Some picures 
 # this function is for extracting the AOIs once for each picture
 # for different versions of AOIs from the same picture, see the function below
 
