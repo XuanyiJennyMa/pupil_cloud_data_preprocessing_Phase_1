@@ -1,6 +1,7 @@
 # This script is used for 1) the extraction of nested area(s) of interests; 
 #                         2) saving the defined AOIs of each reference picture in an independant .csv file.
-# It is a modified version of some codes in Pupil Labs' gallery_demo_analysis https://github.com/pupil-labs/gallery_demo_analysis/blob/main/1_Defining%20Nested%20AOIs.ipynb
+# It is a modified version of some codes in Pupil Labs' gallery_demo_analysis:
+#       https://github.com/pupil-labs/gallery_demo_analysis/blob/main/1_Defining%20Nested%20AOIs.ipynb
 
 
 
