@@ -4,7 +4,7 @@
 #       https://github.com/pupil-labs/gallery_demo_analysis/blob/main/1_Defining%20Nested%20AOIs.ipynb
 # Please note, all reference pictures are saved in the same folder, and this folder is in the same directory with this script.
 
-# Import necessary libraries
+# Import libraries
 import cv2
 import matplotlib
 import matplotlib.patches as patches
@@ -13,13 +13,17 @@ import numpy as np
 import pandas as pd
 import os
 
-# Set the directory of the folder containing all reference pictures
-path_to_reference_image = ("./Reference_pic")
+# Set the directory of the folder containing all reference pictures.
+path_to_reference_image = ("./Reference_pic") 
 
-# This function is for reading the reference picture name.
-# It is n
-extract_name = lambda name: name.split(".jpeg")[0]
+# This function is for reading the reference picture name. 
+# Original code can be found in Pupil Labs' script as indicated above.
+# Change the file extension within the quotation mark if your picures are in different format.
+extract_name = lambda name: name.split(".jpeg")[0] 
 
+
+
+# This function is to extract the information of
 def extract_ref_pics(path):
     all_ref_pic = os.listdir(path)
     ref_pic_dict = {}
