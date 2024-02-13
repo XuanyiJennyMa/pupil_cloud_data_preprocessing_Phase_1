@@ -2,14 +2,9 @@
 #                         2) saving the defined AOIs of each reference picture in an independant .csv file.
 # It is a modified version of some codes in Pupil Labs' gallery_demo_analysis:
 #       https://github.com/pupil-labs/gallery_demo_analysis/blob/main/1_Defining%20Nested%20AOIs.ipynb
+# Please note, all reference pictures are saved in the same folder, and this folder is in the same directory with this script.
 
-
-
-
-
-
-
-
+# Import necessary libraries
 import cv2
 import matplotlib
 import matplotlib.patches as patches
@@ -18,9 +13,13 @@ import numpy as np
 import pandas as pd
 import os
 
+# Set the directory of the folder containing all reference pictures
 path_to_reference_image = ("./Reference_pic")
 
+# This function is for reading the reference picture name.
+# It is n
 extract_name = lambda name: name.split(".jpeg")[0]
+
 def extract_ref_pics(path):
     all_ref_pic = os.listdir(path)
     ref_pic_dict = {}
@@ -28,7 +27,6 @@ def extract_ref_pics(path):
         reference_image = cv2.imread(f"{path}/{pic}")
         reference_image = cv2.cvtColor(reference_image, cv2.COLOR_BGR2RGB)
         ref_pic_dict[extract_name(pic)] = reference_image
-        #globals()[extract_name(pic)] = reference_image
     return ref_pic_dict
 
 reference_picture = extract_ref_pics(path_to_reference_image)     
