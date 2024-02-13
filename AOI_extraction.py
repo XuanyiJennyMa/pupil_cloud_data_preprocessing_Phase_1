@@ -1,3 +1,11 @@
+# This script is used for 1) the extraction of nested area(s) of interests; 2) saving the defined AOIs of each reference picture in an independant .csv file.
+# It is a modified version of some codes in Pupil Labs' gallery_demo_analysis https://github.com/pupil-labs/gallery_demo_analysis/blob/main/1_Defining%20Nested%20AOIs.ipynb
+
+
+
+
+
+
 import cv2
 import matplotlib
 import matplotlib.patches as patches
@@ -26,7 +34,7 @@ reference_picture = extract_ref_pics(path_to_reference_image)
 
 def extract_aoi_info_diff_pic(ref_pic_list):
     for pic in ref_pic_list:
-        scaling_factor = 0.25
+        scaling_factor = 0.5
         picture = reference_picture.get(pic)
         scaled_image = picture.copy()
         scaled_image = cv2.resize(scaled_image, dsize=None, fx=scaling_factor, fy=scaling_factor)
