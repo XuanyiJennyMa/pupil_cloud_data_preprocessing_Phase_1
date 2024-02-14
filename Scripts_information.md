@@ -1,3 +1,4 @@
-## The Guide for the usage of scripts
+# The Guide for the usage of scripts
 
-# This
+## Please read it before applying the scripts on your data
+
