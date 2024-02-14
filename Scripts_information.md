@@ -2,3 +2,7 @@
 
 ## Please read it before applying the scripts on your data
 
+After downloading and extracting the data from the successful enrichment process of each reference picture, the original folder names are like this:
+![Original folder names](Screenshot%202024-02-14%20153212.png)
+
+
