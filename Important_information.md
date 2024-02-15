@@ -1,6 +1,6 @@
 # Aims and the built-up of scripts
 
-## What are the scritps for?
+## A little background information and the set-up of working space
 
 In our project, we are very interested in the fixations in different parts of a manuscript and the saccades between each parts. We have various kinds of manuscripts: 
 +  pictures
@@ -8,14 +8,17 @@ In our project, we are very interested in the fixations in different parts of a 
 +  texts with illustration
 +  texts with paratexts
 
-AOIs for each manuscript need to be defined. However, AOIs are easier to capture in some manuscripts than the others and sometimes there are multiple sets of AOIs that we are interested in for one manuscript. 
+AOIs of each manuscript need to be defined. However, AOIs are easier to capture in some manuscripts than the others and sometimes there are multiple sets of AOIs that we are interested in for one single manuscript. 
 
-In this case, the reference picture of each manuscripts are saved in different folders with folder named "Reference_pic": 
+In this case, manuscripts (also as reference pictures for enrichment on [Pupil Cloud][1] are saved in different folders with folder named "Reference_pic": 
 
 ![Different folders for reference pictures](Screenshot%202024-02-15%20153113.png)
 
+[1]: https://pupil-labs.com/products/cloud
+
 Folder "Complex_aoi" contains the manuscirpts that have multiple sets of AOIs or/and overlapped selection of AOIs (which will be explained with more details in the .py file).
-Folder "Single_aoi" contains the manuscripts that have only one set of AOIs and they are not overlapped (I wish this folder was full while the other one was empty......). 
+Folder "Single_aoi" contains the manuscripts that have only one set of AOIs and they are not overlapped (I wish all reference pictures went to this folder but not the other......). 
+
 
 
 
