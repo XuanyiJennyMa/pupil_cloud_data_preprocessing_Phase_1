@@ -1,6 +1,17 @@
-# The Guide for the usage of scripts
+# Aims and the built-up of scripts
 
-## Please read it before applying the scripts on your data
+## What are the scritps for?
+
+
+
+
+
+
+
+
+
+
+
 
 After downloading and extracting the data from the successful enrichment process of each reference picture, the original folder names are like this:
 
