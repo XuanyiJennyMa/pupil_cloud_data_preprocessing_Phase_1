@@ -5,10 +5,12 @@
 In our project, we are very interested in the fixations in different parts of a manuscript and the saccades between each parts. We have many different kinds of manuscripts: 
 +  pictures
 +  pictures with description
-+  texts with illustrationo
++  texts with illustration
 +  texts with paratexts
 
+AOIs for each manuscript need to be defined. However, AOIs are easier to capture in some manuscripts than the others and sometimes there are multiple sets of AOIs that we are interested in for one manuscript. 
 
+In this case
 
 
 
