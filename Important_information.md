@@ -2,7 +2,7 @@
 
 ## What are the scritps for?
 
-In our project, we are very interested in the fixations in different parts of a manuscript and the saccades between each parts. We have many different kinds of manuscripts: 
+In our project, we are very interested in the fixations in different parts of a manuscript and the saccades between each parts. We have various kinds of manuscripts: 
 +  pictures
 +  pictures with description
 +  texts with illustration
@@ -10,7 +10,11 @@ In our project, we are very interested in the fixations in different parts of a 
 
 AOIs for each manuscript need to be defined. However, AOIs are easier to capture in some manuscripts than the others and sometimes there are multiple sets of AOIs that we are interested in for one manuscript. 
 
-In this case
+In this case, the reference picture of each manuscripts are saved in different folders with folder named "Reference_pic": 
+
+![Different folders for reference pictures](Screenshot%202024-02-15%20153113.png)
+
+
 
 
 
