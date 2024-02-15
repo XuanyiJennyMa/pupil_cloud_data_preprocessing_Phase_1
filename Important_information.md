@@ -14,7 +14,7 @@ In this case, the reference picture of each manuscripts are saved in different f
 
 ![Different folders for reference pictures](Screenshot%202024-02-15%20153113.png)
 
-
+Folder "Complex_aoi" contains the manuscirpts that have multiple sets of AOIs or/and overlapped selection of AOIs (which will be explained with more details in the .py file). 
 
 
 
