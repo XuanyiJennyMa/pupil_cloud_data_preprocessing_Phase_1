@@ -24,16 +24,17 @@ Before you run the scripts, please make sure that the scripts are downloaded and
 ![Original folder names](Screenshot%202024-02-14%20153212.png)
 
 Taking the first manuscript as an example, the original folder name, which is the same as the zip file from the successful enrichment process, is a combination of your project name, your choice of mapper for enrichment, the enrichment name (I named it with the same name of the reference picture of first manuscript, which is Manuscript_1.) and 'csv' linked with underscores.
-
-
-
-
-
-
-
 I personally prefer a shorter folder name which still reminds me what this folder is about, so I changed the folder names into this:
 
 ![New folder names](Screenshot%202024-02-14%20153329.png)
 
 However, this process is completely optional. You don't have to change your folder name as there are also codes prepared to the original long folder names. 
+
+Now let's move on to the scripts.
+
+## [Step0_0_AOI_extraction.py][2]
+
+[2]https://github.com/XuanyiJennyMa/pupil_cloud_data_preprocessing/blob/main/Step0_0_AOI_extraction.py
+
+
 
