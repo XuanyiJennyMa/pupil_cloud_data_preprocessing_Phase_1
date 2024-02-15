@@ -2,6 +2,11 @@
 
 ## What are the scritps for?
 
+In our project, we are very interested in the fixations in different parts of a manuscript and the saccades between each parts. We have many different kinds of manuscripts: 
+1 pictures
+2 pictures with description
+3 texts with illustrationo
+4 texts with paratexts
 
 
 
