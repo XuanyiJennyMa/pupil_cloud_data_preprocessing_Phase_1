@@ -32,10 +32,15 @@ However, this process is completely optional. You don't have to change your fold
 
 Now let's move on to the scripts.
 
-## [Step0_0_AOI_extraction](./Step0_0_AOI_extraction.py)
+## [Step0_0_AOI_extraction.py](./Step0_0_AOI_extraction.py)
+
+As the first step of the data proprecessing, I named it Step 0. Another 0 behind it means that it is the first step within the first step (there are only two substeps anyway......).
+
+Please click the .py file above for more detailed explanation of this script. 
 
 
-Step0_0_AOI_extraction.py
+
+
 
 
 
