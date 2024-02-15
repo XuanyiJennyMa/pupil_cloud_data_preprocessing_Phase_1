@@ -6,4 +6,8 @@ After downloading and extracting the data from the successful enrichment process
 
 ![Original folder names](Screenshot%202024-02-14%20153212.png)
 
+I personally prefer a shorter folder name, so I changed the folder names into this:
+
+![New folder names](Screenshot%202024-02-14%20153329.png)
+
 
