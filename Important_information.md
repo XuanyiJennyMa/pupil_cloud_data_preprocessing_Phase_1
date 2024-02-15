@@ -32,9 +32,9 @@ However, this process is completely optional. You don't have to change your fold
 
 Now let's move on to the scripts.
 
-## [Step0_0_AOI_extraction.py][2]
+## Step0_0_AOI_extraction.py
 
-[2]https://github.com/XuanyiJennyMa/pupil_cloud_data_preprocessing/blob/main/Step0_0_AOI_extraction.py
+
 
 
 
