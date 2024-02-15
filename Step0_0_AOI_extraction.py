@@ -63,7 +63,7 @@ def extract_aoi_info_same_pic(ref_pic, aoi_versions):
     for version in range(aoi_versions):
         scaling_factor = 0.5 # A bigger scaling factor is better for capturing the AOIs in one picture
         picture = reference_picture_complex_aoi.get(ref_pic) # Read the information from dictionary
-        scaled_image = reference_image.copy() # Original code can be found in Pupil Labs' script as indicated above.
+        scaled_image = picture.copy() # Original code can be found in Pupil Labs' script as indicated above.
         scaled_image = cv2.resize(scaled_image, dsize=None, fx=scaling_factor, fy=scaling_factor) # Original code can be found in Pupil Labs' script as indicated above.
         scaled_aois = cv2.selectROIs("AOI Annotation", scaled_image) # Original code can be found in Pupil Labs' script as indicated above.
         cv2.destroyAllWindows() # Original code can be found in Pupil Labs' script as indicated above.
