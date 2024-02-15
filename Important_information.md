@@ -23,18 +23,11 @@ Before you run the scripts, please make sure that the scripts are downloaded and
 
 ![Original folder names](Screenshot%202024-02-14%20153212.png)
 
+Taking the first manuscript as an example, the original folder name, which is the same as the zip file from the successful enrichment process, is a combination of your project name, your choice of mapper for enrichment, the enrichment name (I named it with the same name of the reference picture of first manuscript, which is Manuscript_1.) and 'csv' linked with underscores.
 
 
 
 
-
-
-
-
-
-
-
-After downloading and extracting the data from the successful enrichment process of each reference picture, the original folder names are like this:
 
 
 
