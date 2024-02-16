@@ -38,6 +38,15 @@ As the first step of the data proprecessing, I named it Step 0. Another 0 behind
 
 Please click the .py file above for more detailed explanation of this script. 
 
+## [Step0_1_Draw_save_AOIs.py](Step0_1_Draw_save_AOIs.py)
+
+Here it comes the second step within the first step: visualing the AOIs and saving the visualisation.
+
+Please click the .py file above for more detailed explanation of this script. 
+
+
+
+
 
 
 
