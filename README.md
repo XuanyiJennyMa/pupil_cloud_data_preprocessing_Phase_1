@@ -9,6 +9,8 @@ The eye-tracker in-use is [Neon][3].
 [2]: https://pupil-labs.com/
 [3]: https://pupil-labs.com/products/neon
 
+Please read the [Important_information.md](Important_information.md) before you move on to the scripts. 
+
 Detailed explanation of each script and how to adapt it according to your our research purposes can be found in each .py file. 
 
 If you have any questions or would like to leave any comments and suggetions (you are more than welcome to do so), please feel free to contact Xuanyi Ma via [Xuanyi.Ma@glasgow.ac.uk](mailto:Xuanyi.Ma@glasgow.ac.uk).
