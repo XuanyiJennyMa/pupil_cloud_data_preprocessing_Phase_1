@@ -1,3 +1,5 @@
+# After the successful extraction (Knock!Knock!Knock!) of the information of AOIs of each reference pictures, it is time to visualise them on the reference pictures and save the visualisation. 
+
 import cv2
 import matplotlib
 import matplotlib.patches as patches
