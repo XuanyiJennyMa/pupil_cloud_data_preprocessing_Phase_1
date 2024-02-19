@@ -26,10 +26,13 @@ extract_name = lambda name: name.split(".png")[0]
 def extract_ref_pics(path):
     all_ref_pic = os.listdir(path) # Get all the referenece files in the folder
     ref_pic_dict = {} # create an empty dictionary
+    
+    # Read and extract the information of each referencec picture
     for pic in all_ref_pic: 
-        # Read and extract the information of each referencec picture
-        reference_image = cv2.imread(f"{path}/{pic}") # Original code can be found in Pupil Labs' script as indicated above.
-        reference_image = cv2.cvtColor(reference_image, cv2.COLOR_BGR2RGB) # Original code can be found in Pupil Labs' script as indicated above.
+        # Original code can be found in Pupil Labs' script as indicated above.
+        reference_image = cv2.imread(f"{path}/{pic}") 
+        reference_image = cv2.cvtColor(reference_image, cv2.COLOR_BGR2RGB) 
+        
         # Save the information of each referencec picture in a dictionary with the reference picure name as the key
         ref_pic_dict[extract_name(pic)] = reference_image 
     return ref_pic_dict
@@ -43,18 +46,22 @@ def extract_aoi_info_diff_pic(ref_pic_list):
     for pic in ref_pic_list:
         scaling_factor = 0.5  # A bigger scaling factor is better for capturing the AOIs in one picture
         picture = reference_picture_single_aoi.get(pic) # Read the information from dictionary
-        scaled_image = picture.copy() # Original code can be found in Pupil Labs' script as indicated above.
-        scaled_image = cv2.resize(scaled_image, dsize=None, fx=scaling_factor, fy=scaling_factor) # Original code can be found in Pupil Labs' script as indicated above.
-        scaled_aois = cv2.selectROIs("AOI Annotation", scaled_image) # Original code can be found in Pupil Labs' script as indicated above.
-        cv2.destroyAllWindows() # Original code can be found in Pupil Labs' script as indicated above.
-        aois = scaled_aois / scaling_factor # Original code can be found in Pupil Labs' script as indicated above.
+
+        # Original code can be found in Pupil Labs' script as indicated above.
+        # Selecting AOIs
+        scaled_image = picture.copy() 
+        scaled_image = cv2.resize(scaled_image, dsize=None, fx=scaling_factor, fy=scaling_factor) 
+        scaled_aois = cv2.selectROIs("AOI Annotation", scaled_image) 
+        cv2.destroyAllWindows() 
+        aois = scaled_aois / scaling_factor 
+        
         # Save the information of the AOIs of each picture in an individual .csv file
         aoi_df = pd.DataFrame(aois) 
         filename = pic+"_AOIs.csv"
         aoi_df.to_csv(filename, index=False)
 
-# Uncomment the code below to run the function for all the reference pictures in "Single_aoi" folder.
-# extract_aoi_info_diff_pic(reference_picture_single_aoi)
+# Call the function to process all the reference pictures in "Single_aoi" folder.
+extract_aoi_info_diff_pic(reference_picture_single_aoi)
 # Make your own list if you only want to run it for some of the reference picutres in "Single_aoi" folder.
 
 # This function is for extracting the AOIs for each picture in the "Complex_aoi" folder.
@@ -63,11 +70,15 @@ def extract_aoi_info_same_pic(ref_pic, aoi_versions):
     for version in range(aoi_versions):
         scaling_factor = 0.5 # A bigger scaling factor is better for capturing the AOIs in one picture
         picture = reference_picture_complex_aoi.get(ref_pic) # Read the information from dictionary
-        scaled_image = picture.copy() # Original code can be found in Pupil Labs' script as indicated above.
-        scaled_image = cv2.resize(scaled_image, dsize=None, fx=scaling_factor, fy=scaling_factor) # Original code can be found in Pupil Labs' script as indicated above.
-        scaled_aois = cv2.selectROIs("AOI Annotation", scaled_image) # Original code can be found in Pupil Labs' script as indicated above.
-        cv2.destroyAllWindows() # Original code can be found in Pupil Labs' script as indicated above.
-        aois = scaled_aois / scaling_factor # Original code can be found in Pupil Labs' script as indicated above.
+
+        # Original code can be found in Pupil Labs' script as indicated above.
+        # Selecting AOIs
+        scaled_image = picture.copy() 
+        scaled_image = cv2.resize(scaled_image, dsize=None, fx=scaling_factor, fy=scaling_factor) 
+        scaled_aois = cv2.selectROIs("AOI Annotation", scaled_image) 
+        cv2.destroyAllWindows() 
+        aois = scaled_aois / scaling_factor
+        
         # Save the information of this set of AOIs of the picture in an individual .csv file
         aoi_df = pd.DataFrame(aois)
         filename = ref_pic +'_'+str(version)+"_AOIs.csv"
@@ -75,6 +86,6 @@ def extract_aoi_info_same_pic(ref_pic, aoi_versions):
 
 # For example:
 # If you want to run the function for reference picture "Manuscript_1.png" 4 times because there are 4 sets of AOIs that you are interested in,
-# you can run the function with the proper arguments as shown below:
+# You can run the function with the proper arguments as shown below:
 extract_aoi_info_same_pic('Manuscript_1', 4)
 # Please be aware, the input of 'ref_pic' should always be a string while the input of 'aoi_version' should always be a positive integer. 
