@@ -2,7 +2,7 @@
 #                         2) saving the defined AOIs of each reference picture in an independant .csv file.
 # It is a modified version of some codes in Pupil Labs' gallery_demo_analysis:
 #       https://github.com/pupil-labs/gallery_demo_analysis/blob/main/1_Defining%20Nested%20AOIs.ipynb
-# Please note, all reference pictures are saved in the same folder, and this folder is in the same directory with this script.
+# Please note, "Reference_pic" folder should be saved within the same directory with this script.
 
 # Import libraries
 import cv2
