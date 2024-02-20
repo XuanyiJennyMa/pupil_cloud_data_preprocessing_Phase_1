@@ -65,7 +65,7 @@ extract_aoi_info_diff_pic(reference_picture_single_aoi)
 # Make your own list if you only want to run it for some of the reference picutres in "Single_aoi" folder.
 
 # This function is for extracting the AOIs for each picture in the "Complex_aoi" folder.
-# This function has to been run with one reference picture at once.
+# Run this function with only one set of AOIs and one reference picture at once.
 def extract_aoi_info_same_pic(ref_pic, aoi_versions):
     for version in range(aoi_versions):
         scaling_factor = 0.5 # A bigger scaling factor is better for capturing the AOIs in one picture

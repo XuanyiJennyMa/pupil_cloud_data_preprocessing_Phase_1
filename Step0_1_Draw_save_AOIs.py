@@ -16,7 +16,12 @@ import math
 # Original code can be found in Pupil Labs' script as indicated above.
 plt.rcParams.update({"font.size": 18})
 
-# 
+# This is to set the size of the labels of AOIs in the pictures.
+# Original code can be found in Pupil Labs' script as indicated above.
+plt.rcParams.update({"font.size": 18})
+
+# This function is for overlaying the AOIs on the reference pictures.
+# Original code can be found in Pupil Labs' script as indicated above.
 def plot_aoi_patches(aois, ax, aoi_colors, n_colorsteps):
     for idx, aoi in enumerate(aois):
         ax.add_patch(
@@ -25,61 +30,85 @@ def plot_aoi_patches(aois, ax, aoi_colors, n_colorsteps):
             )
         )
         ax.text(aoi[0] + 20, aoi[1] + 120, f"{idx}", color="black")
+# The function above will be called in the functions below.
 
-#extract the preprocessed AOI information and plot them on the right reference pictures
 
+# This function is for plotting the AOIs on each manuscript that has only one set of AOIs (from "Single_aoi" folder) with the preprocessed AOI information from the previous script.
 def paint_save_aoi_diff_picture(list_of_pics):
     for pic in list_of_pics:  
-        aoi_filepath = pic+'_AOIs.csv'
-        path_to_reference_image = ("./Reference_pic")
-        reference_image_file = pic+'.png'
-        reference_image = cv2.imread(f"{path_to_reference_image}/{reference_image_file}")
+        aoi_file = pic+'_AOIs.csv' # Full filename of AOI information
+        path_to_reference_image = ("./Reference_pic/Single_aoi") # Path to the reference picture
+        reference_image_file = pic+'.png' # Full filename of the reference picture
+
+        # Original code can be found in Pupil Labs' script as indicated above.
+        reference_image = cv2.imread(f"{path_to_reference_image}/{reference_image_file}") 
         reference_image = cv2.cvtColor(reference_image, cv2.COLOR_BGR2RGB)
-        
-        aois = pd.read_csv(aoi_filepath, sep=',')
-        aois = aois.to_numpy()
+
+        # Read the file of AOIs information
+        aois = pd.read_csv(aoi_file, sep=',')
+        aois = aois.to_numpy() # Convert Pandas dataframe to Numpy array
+
+        # Original code can be found in Pupil Labs' script as indicated above.
+        # Define a colormap
         aoi_colors = matplotlib.cm.get_cmap("plasma")
         n_colorsteps = len(aois) - 1
-        
-        h_1, w_1, c_1 = reference_image.shape
-        ratio = w_1/h_1
+
+        # Some referencec pictures are in portrait orientation while the others are in landscape orientation. 
+        # Set the figure size of reference picture accroding to the orientation of the reference picture.
+        height, width, channel = reference_image.shape
+        ratio = width/height
         if ratio <= 1:
             marked_ref_fig = plt.figure(figsize=(math.trunc(ratio*20), 20))
         else:
             marked_ref_fig = plt.figure(figsize=(20, math.trunc(20/ratio)))
-
         plt.imshow(np.asarray(reference_image))
-        
+
+        # Original code can be found in Pupil Labs' script as indicated above.
+        # Plot the AOIs on the reference picture
         plot_aoi_patches(aois, plt.gca(),aoi_colors, n_colorsteps)
         plt.gca().set_axis_off()
+        
+        # Save the referemce picture with AOIs marked 
         save_file_name = pic + '_aois.png'
-
         marked_ref_fig.savefig(save_file_name)
 
+
+# This function is for plotting the AOIs on the manuscript that has multiple sets of AOIs (from "Complex_aoi" folder) with the preprocessed AOI information from the previous script.
+# Run this function with only one set of AOIs and one reference picture at once.
 def paint_save_aoi_same_picture(pic, versions):
     for version in range(versions):  
-        aoi_filepath = pic+'_'+str(version)+'_AOIs.csv'
-        path_to_reference_image = ("./Reference_pic")
-        reference_image_file = pic+'.jpeg'
+        aoi_file = pic+'_'+str(version)+'_AOIs.csv' # Full filename of AOI information
+        path_to_reference_image = ("./Reference_pic/Complex_aoi")  # Path to the reference picture
+        reference_image_file = pic+'.png' # Full filename of the reference picture
+
+        # Original code can be found in Pupil Labs' script as indicated above.
         reference_image = cv2.imread(f"{path_to_reference_image}/{reference_image_file}")
         reference_image = cv2.cvtColor(reference_image, cv2.COLOR_BGR2RGB)
-        
-        aois = pd.read_csv(aoi_filepath, sep=',')
-        aois = aois.to_numpy()
+
+        # Read the file of AOIs information
+        aois = pd.read_csv(aoi_file, sep=',')
+        aois = aois.to_numpy() # Convert Pandas dataframe to Numpy array
+
+        # Original code can be found in Pupil Labs' script as indicated above.
+        # Define a colormap
         aoi_colors = matplotlib.cm.get_cmap("plasma")
         n_colorsteps = len(aois) - 1
         
-        h_1, w_1, c_1 = reference_image.shape
-        ratio = w_1/h_1
+        # Some referencec pictures are in portrait orientation while the others are in landscape orientation. 
+        # Set the figure size of reference picture accroding to the orientation of the reference picture.
+        height, width, channel = reference_image.shape
+        ratio = width/height
         if ratio <= 1:
             marked_ref_fig = plt.figure(figsize=(math.trunc(ratio*20), 20))
         else:
             marked_ref_fig = plt.figure(figsize=(20, math.trunc(20/ratio)))
-
         plt.imshow(np.asarray(reference_image))
-        
+
+        # Original code can be found in Pupil Labs' script as indicated above.
+        # Plot the AOIs on the reference picture
         plot_aoi_patches(aois, plt.gca(),aoi_colors, n_colorsteps)
         plt.gca().set_axis_off()
-        save_file_name = pic + '_' + str(version) + '_aois.png'
 
+        # Save the referemce picture with AOIs marked 
+        save_file_name = pic + '_' + str(version) + '_aois.png'
         marked_ref_fig.savefig(save_file_name)
