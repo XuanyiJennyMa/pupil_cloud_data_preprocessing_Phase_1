@@ -9,15 +9,15 @@ import cv2
 import matplotlib
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 import math 
 
-
-# larger labels are nicer to read
+# This is to set the size of the labels of AOIs in the pictures.
+# Original code can be found in Pupil Labs' script as indicated above.
 plt.rcParams.update({"font.size": 18})
 
-
+# This function is for overlaying the AOIs on the reference pictures.
+# Original code can be found in Pupil Labs' script as indicated above.
 def plot_aoi_patches(aois, ax, aoi_colors, n_colorsteps):
     for idx, aoi in enumerate(aois):
         ax.add_patch(
@@ -26,9 +26,10 @@ def plot_aoi_patches(aois, ax, aoi_colors, n_colorsteps):
             )
         )
         ax.text(aoi[0] + 20, aoi[1] + 120, f"{idx}", color="black")
+# The function above will be called in the functions below.
 
-#extract the preprocessed AOI information and plot them on the right reference pictures
 
+# This function is for plotting the AOIs on each manuscript that has only one set of AOIs (from "Single_aoi" folder) with the preprocessed AOI information from previous script.
 def paint_save_aoi_diff_picture(list_of_pics):
     for pic in list_of_pics:  
         aoi_filepath = pic+'_AOIs.csv'
