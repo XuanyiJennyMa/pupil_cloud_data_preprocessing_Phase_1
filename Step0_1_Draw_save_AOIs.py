@@ -9,15 +9,14 @@ import cv2
 import matplotlib
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 import math 
 
-
-# larger labels are nicer to read
+# This is used for the set-up of larger labels of AOIs in the reference pictures
+# Original code can be found in Pupil Labs' script as indicated above.
 plt.rcParams.update({"font.size": 18})
 
-
+# 
 def plot_aoi_patches(aois, ax, aoi_colors, n_colorsteps):
     for idx, aoi in enumerate(aois):
         ax.add_patch(
