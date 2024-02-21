@@ -44,6 +44,12 @@ Here it comes the second step within the first step: visualing the AOIs and savi
 
 Please click the .py file above for more detailed explanation of this script. 
 
+## [Step0_extract_draw_save_AOIs.py](Step0_extract_draw_save_AOIs.py)
+
+As you probably have discovered, these two steps within the first step of data proprecessing can be combined into one bigger step. 
+
+Please click the .py file above for more detailed explanation of this script. 
+
 
 
 
