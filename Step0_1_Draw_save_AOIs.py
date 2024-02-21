@@ -10,13 +10,10 @@ import matplotlib
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 import math 
 
 # This is used for the set-up of larger labels of AOIs in the reference pictures
-# Original code can be found in Pupil Labs' script as indicated above.
-plt.rcParams.update({"font.size": 18})
-
-# This is to set the size of the labels of AOIs in the pictures.
 # Original code can be found in Pupil Labs' script as indicated above.
 plt.rcParams.update({"font.size": 18})
 
