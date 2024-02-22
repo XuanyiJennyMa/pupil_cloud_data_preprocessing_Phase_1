@@ -17,6 +17,10 @@ import os
 path_to_reference_image_single_aoi = ("./Reference_pic/Single_aoi") 
 path_to_reference_image_complex_aoi = ("./Reference_pic/Complex_aoi")
 
+# Create a new directory to save AOI information for each reference picture
+save_aoi_path = "./AOI_information"
+os.mkdir(save_aoi_path)
+
 # This function is for reading the reference picture name. 
 # Original code can be found in Pupil Labs' script as indicated above.
 # Change the file extension within the quotation mark if your picures are in different format.
@@ -58,7 +62,7 @@ def extract_aoi_info_diff_pic(ref_pic_list):
         # Save the information of the AOIs of each picture in an individual .csv file
         aoi_df = pd.DataFrame(aois) 
         filename = pic+"_AOIs.csv"
-        aoi_df.to_csv(filename, index=False)
+        aoi_df.to_csv(f"{save_aoi_path}/{filename}", index=False)
 
 # Call the function to process all the reference pictures in "Single_aoi" folder.
 extract_aoi_info_diff_pic(reference_picture_single_aoi)
@@ -82,7 +86,7 @@ def extract_aoi_info_same_pic(ref_pic, aoi_versions):
         # Save the information of this set of AOIs of the picture in an individual .csv file
         aoi_df = pd.DataFrame(aois)
         filename = ref_pic +'_'+str(version)+"_AOIs.csv"
-        aoi_df.to_csv(filename, index=False)
+        aoi_df.to_csv(f"{save_aoi_path}/{filename}", index=False)
 
 # For example:
 # If you want to run the function for reference picture "Manuscript_1.png" 4 times because there are 4 sets of AOIs that you are interested in,
