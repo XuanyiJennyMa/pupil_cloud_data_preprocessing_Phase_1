@@ -13,6 +13,14 @@ import math
 path_to_reference_image_single_aoi = ("./Reference_pic/Single_aoi") 
 path_to_reference_image_complex_aoi = ("./Reference_pic/Complex_aoi")
 
+# Create a new directory to save AOI information for each reference picture
+save_aoi_path = "./AOI_information"
+os.mkdir(save_aoi_path)
+
+# Create a new directory to save plotted AOIs on each reference picture
+Plot_aoi_path = "./AOI_plot"
+os.mkdir(Plot_aoi_path)
+
 # This function is for reading the reference picture name. 
 # Original code can be found in Pupil Labs' script as indicated above.
 # Change the file extension within the quotation mark if your picures are in different format.
@@ -71,7 +79,7 @@ def extract_draw_save_aoi_info_diff_pic(ref_pic_list):
         # Save the information of the AOIs of each picture in an individual .csv file
         aoi_df = pd.DataFrame(aois) 
         filename = pic+"_AOIs.csv"
-        aoi_df.to_csv(filename, index=False)
+        aoi_df.to_csv(f"{save_aoi_path}/{filename}", index=False)
 
          # Original code can be found in Pupil Labs' script as indicated above.
         # Define a colormap
@@ -95,7 +103,7 @@ def extract_draw_save_aoi_info_diff_pic(ref_pic_list):
         
         # Save the referemce picture with AOIs marked 
         save_file_name = pic + '_aois.png'
-        marked_ref_fig.savefig(save_file_name)
+        marked_ref_fig.savefig(f"{Plot_aoi_path}/{save_file_name}")
 
 # Call the function to process all the reference pictures in "Single_aoi" folder.
 extract_draw_save_aoi_info_diff_pic(reference_picture_single_aoi)
@@ -119,7 +127,7 @@ def extract_draw_save_aoi_info_same_pic(ref_pic, aoi_versions):
         # Save the information of this set of AOIs of the picture in an individual .csv file
         aoi_df = pd.DataFrame(aois)
         filename = ref_pic +'_'+str(version)+"_AOIs.csv"
-        aoi_df.to_csv(filename, index=False)
+        aoi_df.to_csv(f"{save_aoi_path}/{filename}", index=False)
 
         # Original code can be found in Pupil Labs' script as indicated above.
         # Define a colormap
@@ -142,8 +150,8 @@ def extract_draw_save_aoi_info_same_pic(ref_pic, aoi_versions):
         plt.gca().set_axis_off()
 
         # Save the referemce picture with AOIs marked 
-        save_file_name = pic + '_' + str(version) + '_aois.png'
-        marked_ref_fig.savefig(save_file_name)
+        save_file_name = ref_pic + '_' + str(version) + '_aois.png'
+        marked_ref_fig.savefig(f"{Plot_aoi_path}/{save_file_name}")
 
 
 
