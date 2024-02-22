@@ -12,10 +12,15 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import math 
+import os
 
 # This is used for the set-up of larger labels of AOIs in the reference pictures
 # Original code can be found in Pupil Labs' script as indicated above.
 plt.rcParams.update({"font.size": 18})
+
+# Create a new directory to save plotted AOIs on each reference picture
+Plot_aoi_path = "./AOI_plot"
+os.mkdir(Plot_aoi_path)
 
 # This function is for overlaying the AOIs on the reference pictures.
 # Original code can be found in Pupil Labs' script as indicated above.
@@ -28,7 +33,6 @@ def plot_aoi_patches(aois, ax, aoi_colors, n_colorsteps):
         )
         ax.text(aoi[0] + 20, aoi[1] + 120, f"{idx}", color="black")
 # The function above will be called in the functions below.
-
 
 # This function is for plotting the AOIs on each manuscript that has only one set of AOIs (from "Single_aoi" folder) with the preprocessed AOI information from the previous script.
 def paint_save_aoi_diff_picture(list_of_pics):
@@ -67,7 +71,7 @@ def paint_save_aoi_diff_picture(list_of_pics):
         
         # Save the referemce picture with AOIs marked 
         save_file_name = pic + '_aois.png'
-        marked_ref_fig.savefig(save_file_name)
+        marked_ref_fig.savefig(f"{Plot_aoi_path}/{save_file_name}")
 
 
 # This function is for plotting the AOIs on the manuscript that has multiple sets of AOIs (from "Complex_aoi" folder) with the preprocessed AOI information from the previous script.
@@ -108,4 +112,4 @@ def paint_save_aoi_same_picture(pic, versions):
 
         # Save the referemce picture with AOIs marked 
         save_file_name = pic + '_' + str(version) + '_aois.png'
-        marked_ref_fig.savefig(save_file_name)
+        marked_ref_fig.savefig(f"{Plot_aoi_path}/{save_file_name}")
