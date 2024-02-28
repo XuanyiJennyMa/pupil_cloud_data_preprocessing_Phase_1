@@ -34,7 +34,6 @@ def label_aoi_diff_pic(list_of_pics):
         aoi_filepath = "./AOI_information/" + pic + '_AOIs.csv'
         aois = pd.read_csv(aoi_filepath, sep=',')
         aois = aois.to_numpy()
-        paintings = [idx for idx in range(len(aois))]
         
         # Import the fixation data
         # If you have changed the folder name to be the same as the picture name
@@ -57,6 +56,8 @@ def label_aoi_diff_pic(list_of_pics):
         fixations["AOI"] = None
 
         # Assign the AOI ID to those fixations that were inside the AOI
+        # Original code can be found in Pupil Labs' script as indicated above.
+        paintings = [idx for idx in range(len(aois))]
         for aoi_id, aoi in enumerate(aois):
             fixations.loc[check_in_rect(fixations, aoi), "AOI"] = paintings[aoi_id]
 
@@ -79,7 +80,6 @@ def label_aoi_same_pic(pic, versions):
         aoi_filepath = "./AOI_information/" + pic+'_'+str(version)+'_AOIs.csv'
         aois = pd.read_csv(aoi_filepath, sep=',')
         aois = aois.to_numpy()
-        paintings = [idx for idx in range(len(aois))]
         
         # Import the section file for the wearer information
         section = pd.read_csv(f"{data_folder}/sections.csv")
@@ -94,6 +94,8 @@ def label_aoi_same_pic(pic, versions):
         fixations[column_name] = None
 
         # Assign the AOI ID to those fixations that were inside the AOI
+        # Original code can be found in Pupil Labs' script as indicated above.
+        paintings = [idx for idx in range(len(aois))]
         for aoi_id, aoi in enumerate(aois):
             fixations.loc[check_in_rect(fixations, aoi), column_name] = paintings[aoi_id]
     
