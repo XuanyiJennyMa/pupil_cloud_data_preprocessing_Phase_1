@@ -65,7 +65,7 @@ def plot_aoi_patches(aois, ax, aoi_colors, n_colorsteps):
 # This function is for extracting, drawing and saving the AOIs once for each picture in the "Single_aoi" folder
 def extract_draw_save_aoi_info_diff_pic(ref_pic_list):
     for pic in ref_pic_list:
-        scaling_factor = 0.5  # A bigger scaling factor is better for capturing the AOIs in one picture
+        scaling_factor = 0.3  # Change it according to the size of your reference picture(s)
         picture = reference_picture_single_aoi.get(pic) # Read the information from dictionary
 
         # Original code can be found in Pupil Labs' script as indicated above.
@@ -113,7 +113,7 @@ extract_draw_save_aoi_info_diff_pic(reference_picture_single_aoi)
 # Run this function with only one set of AOIs and one reference picture at once.
 def extract_draw_save_aoi_info_same_pic(ref_pic, aoi_versions):
     for version in range(aoi_versions):
-        scaling_factor = 0.5 # A bigger scaling factor is better for capturing the AOIs in one picture
+        scaling_factor = 0.3  # Change it according to the size of your reference picture(s)
         picture = reference_picture_complex_aoi.get(ref_pic) # Read the information from dictionary
 
         # Original code can be found in Pupil Labs' script as indicated above.
