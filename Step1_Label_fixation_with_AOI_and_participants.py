@@ -40,7 +40,7 @@ def label_aoi_diff_pic(list_of_pics):
         data_folder = "./" + pic
         # If you keep the folder name as how it was downloaded from Pupil Cloud, comment the line above and uncomment the two lines below:
         # foldername = glob.glob('*' + pic + '_csv')
-        # data_folder = "./" + foldername
+        # data_folder = "./" + foldername[0]
         fixations = pd.read_csv(f"{data_folder}/fixations.csv")
         fixations = fixations[fixations["fixation detected in reference image"]]
         
@@ -71,7 +71,7 @@ def label_aoi_same_pic(pic, versions):
     data_folder = "./" + pic
     # If you keep the folder name as how it was downloaded from Pupil Cloud, comment the line above and uncomment the two lines below:
     # foldername = glob.glob('*' + pic + '_csv')
-    # data_folder = "./" + foldername
+    # data_folder = "./" + foldername[0]
     fixations = pd.read_csv(f"{data_folder}/fixations.csv")
     fixations = fixations[fixations["fixation detected in reference image"]]
     
