@@ -11,6 +11,7 @@ Please note, folders that contain enrichment data should be saved within the sam
 # Import libraries
 import numpy as np
 import pandas as pd
+import glob
 
 def check_in_rect(fixation_data, rectangle_coordinates):
     """
@@ -31,40 +32,41 @@ def check_in_rect(fixation_data, rectangle_coordinates):
 
 def label_overlap_aoi(pic, version):
       
-      # Import the fixation data
-      # If you have changed the folder name to be the same as the picture name
-      data_folder = "./" + pic
-      # If you keep the folder name as how it was downloaded from Pupil Cloud, comment the line above and uncomment the two lines below:
-      # foldername = glob.glob('*' + pic + '_csv')
-      # data_folder = "./" + foldername[0]
-
-      fixations = pd.read_csv(f"{path_to_fixation_data}/labelled_fixations_diff_version.csv")
-      #import the saved AOI information
-      aoi_filepath = pic + "_" + str(version) + "_AOI.csv"
-      aois = pd.read_csv(aoi_filepath, sep=',')
-      aois = aois.to_numpy()
-      paintings = [idx for idx in range(len(aois))]
-        
-      # create a new column of 'None's in our data frame
-      column_name = 'AOI_test'
-      fixations[column_name] = None
-
-      AOI_number = len(aois) - 1
-      index_list = fixations.index
-      index_list_total = index_list[check_in_rect(fixations, aois[(AOI_number)])].to_list()
-
-      for i in range(0, (len(aois) -1)):
-            list_overlap = index_list[check_in_rect(fixations, aois[i])].to_list()
-            non_overlap = [x for x in index_list_total if x not in list_overlap]
-            index_list_total[:]  = non_overlap
+    # Import the fixation data
+    # If you have changed the folder name to be the same as the picture name
+    # data_folder = "./" + pic
+    # If you keep the folder name as how it was downloaded from Pupil Cloud, comment the line above and uncomment the two lines below:
+    foldername = glob.glob('*' + pic + '_csv')
+    data_folder = "./" + foldername[0]
+    fixations = pd.read_csv(f"{data_folder}/labelled_fixations_diff_version.csv")
     
-      # assign the AOI ID to those fixations that were inside the AOI
-      for aoi_id, aoi in enumerate(aois):
-            if aoi_id < AOI_number:
-                  fixations.loc[check_in_rect(fixations, aoi), column_name] = paintings[aoi_id]
-            else:
-                  fixations.loc[index_list_total, column_name] = AOI_number
+    # Import the saved AOI information
+    aoi_filepath = "./AOI_information/" + pic + "_" + str(version) + '_AOIs.csv'
+    aois = pd.read_csv(aoi_filepath, sep=',')
+    aois = aois.to_numpy()
+
+        
+    # create a new column of 'None's in our data frame
+    column_name = 'AOI_test'
+    fixations[column_name] = None
+
+    AOI_number = len(aois) - 1
+    index_list = fixations.index
+    index_list_total = index_list[check_in_rect(fixations, aois[(AOI_number)])].to_list()
+
+    for i in range(0, (len(aois) -1)):
+        list_overlap = index_list[check_in_rect(fixations, aois[i])].to_list()
+        non_overlap = [x for x in index_list_total if x not in list_overlap]
+        index_list_total[:]  = non_overlap
+    
+    # assign the AOI ID to those fixations that were inside the AOI
+    paintings = [idx for idx in range(len(aois))]
+    for aoi_id, aoi in enumerate(aois):
+        if aoi_id < AOI_number:
+                fixations.loc[check_in_rect(fixations, aoi), column_name] = paintings[aoi_id]
+        else:
+                fixations.loc[index_list_total, column_name] = AOI_number
             
                 
-      save_file_name = 'final_labelled_fixations_diff_version.csv'
-      fixations.to_csv(f"{path_to_fixation_data}/{save_file_name}", index=False)  
+    save_file_name = 'final_labelled_fixations_diff_version.csv'
+    fixations.to_csv(f"{data_folder}/{save_file_name}", index=False)  
