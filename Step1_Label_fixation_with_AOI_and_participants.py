@@ -1,8 +1,10 @@
-# This script is used for labelling the fixations data with the AOIs and wearer name (or participant number in the example)
-# It is a modified version of some codes in Pupil Labs' gallery_demo_analysis:
-#       https://github.com/pupil-labs/gallery_demo_analysis/blob/main/1_Defining%20Nested%20AOIs.ipynb
-# Please note, folders that contain enrichment data should be saved within the same directory with this script.
+"""
+This script is used for labelling the fixations data with the AOIs and wearer name (or participant number in the example)
+It is a modified version of some codes in Pupil Labs' gallery_demo_analysis:
+      https://github.com/pupil-labs/gallery_demo_analysis/blob/main/1_Defining%20Nested%20AOIs.ipynb
+Please note, folders that contain enrichment data should be saved within the same directory with this script.
 
+"""
 # Import libraries
 import numpy as np
 import pandas as pd

@@ -1,4 +1,7 @@
+"""
+This is the combination of step0_0 and step0_1.
 
+"""
 # Import libraries
 import cv2
 import matplotlib
