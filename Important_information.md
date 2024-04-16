@@ -1,6 +1,6 @@
 # Data file
 In order to provide some data for you to test the scripts out, we have uploaded the data we collected with some funny memes. 
-Raw timeseries data, which contains the pupil diameter data, as well as the fixation and gaze data processed with enrichment in [Pupil Cloud][1]) have been downloaded. 
+Raw timeseries data, which contains the pupil diameter data, as well as the fixation and gaze data processed with enrichment in [Pupil Cloud][1] have been downloaded. 
 Please find the [file](./Original_data_of_funny_pic.zip), and click "View raw" inside the file to download it. 
 
 # Aims and the built-up of scripts
