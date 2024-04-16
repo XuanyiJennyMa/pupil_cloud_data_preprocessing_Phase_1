@@ -10,7 +10,30 @@ wearer_name = [participant for index, participant in enumerate(section_info_df['
 for wearer in wearer_name:
     data_folder = glob.glob('./Timeseries Data/'+ "*" + wearer)
     pupil_df = pd.read_csv(f"{data_folder[0]}/3d_eye_states.csv")
-    pupil_df['aoi_column'] = None
+    
+    pupil_event = pd.read_csv(f"{data_folder[0]}/events.csv")
+    valid_event = [event for index, event in enumerate(pupil_event['name']) if 'recording' not in event]
+    
+    manu_number = []
+    for event in valid_event:
+        number = event.split(".")[0].split("_")[-1]
+        manu_number.append(number)
+    
+    single_manu = np.unique(manu_number)
+
+    for manu in single_manu:
+        start_event_name = "Manu_" + manu + ".start"
+        end_event_name = "Manu_" + manu + ".end"
+        start_index = pupil_event['name'].to_list().index(start_event_name)
+        end_index = pupil_event['name'].to_list().index(end_event_name)
+    
+        start_time = pupil_event['timestamp [ns]'][start_index]
+        end_time = pupil_event['timestamp [ns]'][end_index]
+    
+        subset = pupil_df[(pupil_df['timestamp [ns]'] >= start_time) & (pupil_df['timestamp [ns]'] <= end_time)]
+        index_list = subset.index
+        pupil_df.loc[index_list, 'Manuscript'] = manu
+    
     pupil_df.to_csv(f"{data_folder[0]}/labelled_pupil.csv", index=False)
 
 def label_pupil_with_aoi(pic, multi_version_check, overlapped_aois, version):
