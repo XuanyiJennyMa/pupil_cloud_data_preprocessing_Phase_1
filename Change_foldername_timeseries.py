@@ -1,5 +1,10 @@
-# Import libraries
+"""
+This script is used for changing the names of the folders that contain raw pupil diameter data for each participant. 
+Please note, the "Timeseries data" folder that contain all these folders should be saved within the same directory with this script.
 
+"""
+
+# Import libraries
 import glob
 import os
 
