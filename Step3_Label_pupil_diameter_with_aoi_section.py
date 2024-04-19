@@ -1,39 +1,58 @@
+"""
+This script is used for label the raw pupil diameter data with event information (timestamps from PupilCloud) and AOIs (timeestamps from previous steps). 
+Please note, the "Timeseries data" folder should be saved within the same directory with this script.
+Please make sure that you have ran the script "Change_foldername_timeseries.py". 
+
+"""
+
+# Import libraries
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import csv
 import glob
 
+# Read the information of wearers
 section_info_df = pd.read_csv("Timeseries Data/sections.csv")
+
+# Filter out the information of scanning recordings
+# Change the keyword "scanning" if you label your scanning videos differently
 wearer_name = [participant for index, participant in enumerate(section_info_df['wearer name']) if 'scanning' not in participant]
 
+# Label each wearer' raw pupil diameter data with event information (timestamps from PupilCloud)
 for wearer in wearer_name:
+    # Read the pupil diameter data
     data_folder = glob.glob('./Timeseries Data/'+ "*" + wearer)
-    pupil_df = pd.read_csv(f"{data_folder[0]}/3d_eye_states.csv")
-    
+    pupil_df = pd.read_csv(f"{data_folder[0]}/3d_eye_states.csv") 
+
+    # Read the event information
     pupil_event = pd.read_csv(f"{data_folder[0]}/events.csv")
+    # Filter out the beginning and the ending of the recording as there are useless data before the partipant starting reading the first manuscript and after the participant finishing reading the last manuscript
     valid_event = [event for index, event in enumerate(pupil_event['name']) if 'recording' not in event]
     
+    # Make a list of the numbers of the manuscripts that the participant has read
     manu_number = []
     for event in valid_event:
         number = event.split(".")[0].split("_")[-1]
         manu_number.append(number)
-    
     single_manu = np.unique(manu_number)
 
+    # Label participant's raw pupil diameter data with event information
     for manu in single_manu:
+        # Read the timestamps of the starting and ending of the manuscript
         start_event_name = "Manu_" + manu + ".start"
         end_event_name = "Manu_" + manu + ".end"
         start_index = pupil_event['name'].to_list().index(start_event_name)
         end_index = pupil_event['name'].to_list().index(end_event_name)
-    
         start_time = pupil_event['timestamp [ns]'][start_index]
         end_time = pupil_event['timestamp [ns]'][end_index]
-    
+
+        # Assign the manuscript number to thoes pupil diameter data that were collected while reading this manuscript
         subset = pupil_df[(pupil_df['timestamp [ns]'] >= start_time) & (pupil_df['timestamp [ns]'] <= end_time)]
         index_list = subset.index
         pupil_df.loc[index_list, 'Manuscript'] = manu
     
+    # Save the labelled file
     pupil_df.to_csv(f"{data_folder[0]}/labelled_pupil.csv", index=False)
 
 def label_pupil_with_aoi(pic, multi_version_check, overlapped_aois, version):
