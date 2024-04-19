@@ -8,12 +8,15 @@ Please note, the "Timeseries data" folder that contain all these folders should 
 import glob
 import os
 
-# label the pupil data with manuscript information
+# Read the information of wearers
 section_info_df = pd.read_csv("Timeseries Data/sections.csv")
+
+# Filter out the information of scanning recordings
+# Change the keyword "scanning" if you label your scanning videos differently
 wearer_name = [participant for index, participant in enumerate(section_info_df['wearer name']) if 'scanning' not in participant]
 wearer_index = [index for index, participant in enumerate(section_info_df['wearer name']) if 'scanning' not in participant]
-print(wearer_name,wearer_index)
 
+# Change each folder name to a combination of recording id and wearer name
 for idx, wearer_idx in enumerate(wearer_index):
     recording_id = section_info_df['recording id'][wearer_idx]
     recording_id_abbr = recording_id.split("-")[0] 
