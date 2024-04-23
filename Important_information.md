@@ -1,7 +1,7 @@
 # Data file
 In order to provide some data for you to test the scripts out, we have uploaded the data we collected with some funny memes. 
 Raw timeseries data, which contains the pupil diameter data, as well as the fixation and gaze data processed with enrichment in [Pupil Cloud][1] have been downloaded. 
-Please find the [file](./Original_data_of_funny_pic.zip), and click "View raw" inside the file to download it. 
+Please click on the [file](./Original_data_of_funny_pic.zip), and then click "View raw" to download it. 
 
 # Aims and the built-up of scripts
 
@@ -56,6 +56,10 @@ As you probably have discovered, these two steps within the first step of data p
 Please click the .py file above for more detailed explanation of this script. 
 
 ## [Step1_Label_fixation_with_AOI_and_participants.py](Step1_Label_fixation_with_AOI_and_participants.py)
+
+After defining the AOIs in each reference picture, the next step is to label the valid fixation data with the information of AOIs. 
+
+The fixation data we use here are the ones from enrichment process. Thus, each "fixations.csv" file contains all participants' valid fixation data of one reference picture. Therefore, we will also label the data with the information of participants just in case. 
 
 ## [Addition_Step1_overlapped_aoi.py](Addition_Step1_overlapped_aoi.py)
 
