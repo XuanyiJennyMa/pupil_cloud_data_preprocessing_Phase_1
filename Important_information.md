@@ -61,15 +61,25 @@ After defining the AOIs in each reference picture, the next step is to label the
 
 The fixation data we use here are the ones from enrichment process. Thus, each "fixations.csv" file contains all participants' valid fixation data of one reference picture. Therefore, we will also label the data with the information of participants just in case. 
 
+Please click the .py file above for more detailed explanation of this script. 
+
 ## [Addition_Step1_overlapped_aoi.py](Addition_Step1_overlapped_aoi.py)
 
 With the applied approach for AOI selection, the AOIs can only be highlighted into rectangular areas. For example, as shown in the picture below: 
 ![Overlappend AOIs](Overlapped_aois.png)
-There are 
+if we are also interested in the blank area (outside of AOIs from 0 to 3), we need to either 1) break down the blank area into several rectangles and select each one manuall; or 2) select the whole picture (as what has been done) and do the selection of the blank area during the data preprocessing. 
+
+If you choose to go for the second choice, please click the .py file above for more detailed explanation of this script. 
 
 ## [Step2_Label_gaze_with_participant.py](Step2_Label_gaze_with_participant.py)
 
+The gaze data from enrichment process have already been labelled with fixation numbers. However, as each "gaze.csv" file contains all participants' valid fixation data of one reference picture, we will also label the data with the information of participants just in case.
+
+Please click the .py file above for more detailed explanation of this script. 
+
 ## [Change_foldername_timeseries.py](Change_foldername_timeseries.py)
+
+
 
 ## [Step3_Label_pupil_diameter_with_aoi_section.py](Step3_Label_pupil_diameter_with_aoi_section.py)
 
