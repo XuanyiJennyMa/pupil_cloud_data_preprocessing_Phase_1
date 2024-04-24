@@ -82,10 +82,13 @@ Please click the .py file above for more detailed explanation of this script.
 The pupil diameter data are saved inside "Timeseries Data" folder as raw data that can be downloaded from [Pupil Cloud][1]. The structure of the data is slightly different from the data from enrichment process as each "3d_eye_states.csv" file within the recording folder contains only one participant's pupil diameter data from the entile recording (with all reference pictures that the participant has read during the experiment). 
 
 The original folder names are very long as shown below:
+
 ![Timeseries_data_folders_original_names](Timeseries_data_folders_original_names.png) 
+
 which is a combination of realworld time of the recording and the first part of its recording id.
 
 Although each recording has its unique id and the links between recording id and wearer can be found in the "sections.csv" fill, it will be much better and straigtforward if each folder name contains the wearer information as shown below:
+
 ![Timeseries_data_folders_changed_names](Timeseries_data_folders_changed_names.png) 
 
 Please click the .py file above for more detailed explanation of this script. 
