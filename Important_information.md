@@ -17,7 +17,7 @@ AOIs of each manuscript need to be defined. However, AOIs are easier to capture 
 
 In this case, manuscripts (also as reference pictures for enrichment in [Pupil Cloud][1]) are saved in different folders with folder named "Reference_pic": 
 
-![Different folders for reference pictures](Screenshot%202024-02-15%20153113.png)
+![Different folders for reference pictures](Illustration_pics/Screenshot%202024-02-15%20153113.png)
 
 [1]: https://pupil-labs.com/products/cloud
 
