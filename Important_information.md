@@ -79,7 +79,7 @@ Please click the .py file above for more detailed explanation of this script.
 
 ## [Change_foldername_timeseries.py](Change_foldername_timeseries.py)
 
-
+The pupil diameter data are saved inside "Timeseries Data" folder as raw data that can be downloaded from [Pupil Cloud][1]. Howev
 
 ## [Step3_Label_pupil_diameter_with_aoi_section.py](Step3_Label_pupil_diameter_with_aoi_section.py)
 
