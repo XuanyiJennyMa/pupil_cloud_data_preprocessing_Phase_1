@@ -26,12 +26,12 @@ Folder "Single_aoi" contains the manuscripts that have only one set of AOIs and 
 
 Before you run the scripts, please make sure that the scripts are downloaded and saved in the same folder with the other folders including the raw timeseries data, the data from enrichment and reference pictures (as shown below):
 
-![Original folder names](Data_folders.png)
+![Original folder names](Illustration_pics/Data_folders.png)
 
 Taking the first manuscript as an example, the original folder name, which is the same as the zip file from the successful enrichment process, is a combination of your project name, your choice of mapper for enrichment, the enrichment name (I named it with the same name of the reference picture of first manuscript, which is Manuscript_1.) and 'csv' linked with underscores.
 I personally prefer a shorter folder name which still reminds me what this folder is about, so I changed the folder names into this:
 
-![New folder names](Data_folders_name_changed.png)
+![New folder names](Illustration_pics/Data_folders_name_changed.png)
 
 However, this process is completely optional. You don't have to change your folder name as there are also codes prepared to the original long folder names. 
 
@@ -66,7 +66,7 @@ Please click the .py file above for more detailed explanation of this script.
 ## [Addition_Step1_overlapped_aoi.py](Addition_Step1_overlapped_aoi.py)
 
 With the applied approach for AOI selection, the AOIs can only be highlighted into rectangular areas. For example, as shown in the picture below: 
-![Overlappend AOIs](Overlapped_aois.png)
+![Overlappend AOIs](Illustration_pics/Overlapped_aois.png)
 if we are also interested in the blank area (outside of AOIs from 0 to 3), we need to either 1) break down the blank area into several rectangles and select each one manuall; or 2) select the whole picture (as what has been done) and do the selection of the blank area during the data preprocessing. 
 
 If you choose to go for the second choice, please click the .py file above for more detailed explanation of this script. 
@@ -83,13 +83,13 @@ The pupil diameter data are saved inside "Timeseries Data" folder as raw data th
 
 The original folder names are very long as shown below:
 
-![Timeseries_data_folders_original_names](Timeseries_data_folders_original_names.png) 
+![Timeseries_data_folders_original_names](Illustration_pics/Timeseries_data_folders_original_names.png) 
 
 which is a combination of realworld time of the recording and the first part of its recording id.
 
 Although each recording has its unique id and the links between recording id and wearer can be found in the "sections.csv" fill, it will be much better and straigtforward if each folder name contains the wearer information as shown below:
 
-![Timeseries_data_folders_changed_names](Timeseries_data_folders_changed_names.png) 
+![Timeseries_data_folders_changed_names](Illustration_pics/Timeseries_data_folders_changed_names.png) 
 
 Please click the .py file above for more detailed explanation of this script. 
 
