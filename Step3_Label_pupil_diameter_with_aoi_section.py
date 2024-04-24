@@ -55,6 +55,8 @@ for wearer in wearer_name:
     # Save the labelled file
     pupil_df.to_csv(f"{data_folder[0]}/labelled_pupil.csv", index=False)
 
+# Assign the AOIs information to the pupil diameter data according to the timestamps from fixation data
+# And save each participant's fixation data for checking the accuracy of the labelling process
 def label_pupil_with_aoi(pic, multi_version_check, overlapped_aois, version):
     if multi_version_check == True:
         aoi_version = version
@@ -74,9 +76,10 @@ def label_pupil_with_aoi(pic, multi_version_check, overlapped_aois, version):
     foldername = glob.glob('*' + pic + '_csv')
     data_folder = "./" + foldername[0]
     aoi_labelled_fixations = pd.read_csv(f"{data_folder}/{csv_file}")
-    
+
     fixation_participant_dict = {}
     for wearer in wearer_name:
+        # Read the pupil diameter data of each participant from Timeseries Data folder
         pupil_data_folder = glob.glob('./Timeseries Data/'+ "*" + wearer)
         pupil_diameter = pd.read_csv(f"{pupil_data_folder[0]}/labelled_pupil.csv")
 
@@ -84,12 +87,14 @@ def label_pupil_with_aoi(pic, multi_version_check, overlapped_aois, version):
         end_time_list = []
         selected_participant = aoi_labelled_fixations[aoi_labelled_fixations['Participant'] == int(wearer)]
         valid_fixations = [fixation for index, fixation in enumerate(selected_participant[aoi_column]) if not pd.isna(fixation)]
-        fixation_list = np.unique(valid_fixations)
+        fixation_list = np.unique(valid_fixations) # Even for the same reference picture, some participants may not have looked at all area of interests. 
         
         for fix in fixation_list:
             selected_fixation = selected_participant[selected_participant[aoi_column] == fix]
             list_of_index = selected_fixation.index.to_list()
-            
+
+            # There may be multiple lists of continuous fixations in one AOI
+            # Read all lists of continuous fixations in one AOI
             list_fixation = []
             list_of_list_fixation = []
             for index_no in list_of_index:
@@ -101,13 +106,16 @@ def label_pupil_with_aoi(pic, multi_version_check, overlapped_aois, version):
                         list_of_list_fixation.append(list_fixation)
                         list_fixation=[]
                 else:
-                    list_fixation.append(index_no)
+                    list_fixation.append(index_no)     
                     
-                    
+            # Save the lists into another list
             list_of_list_fixation.append(list_fixation)
+            # Save the list into the dictionary with the key name indicating the participant and AOI information
             key_name = 'participant_' + wearer + '_fixation_' + str(int(fix))
             fixation_participant_dict[key_name] = list_of_list_fixation
             
+            # Find the start time and the end time of each list of continuous fixations
+            # Save the timestamps
             start_time = []
             end_time=[]
             for i in range(0, len(list_of_list_fixation)):
@@ -116,17 +124,18 @@ def label_pupil_with_aoi(pic, multi_version_check, overlapped_aois, version):
             start_time_list.append(start_time)  
             end_time_list.append(end_time)  
             
-
+        # Assign the pupil diameter data that are between the start and end timestamps of the continuous fixations within the AOI to the AOI number   
         for i, fix in enumerate(fixation_list):
             for j in range(0, len(start_time_list[i])):
                 subset = pupil_diameter[(pupil_diameter['timestamp [ns]'] >= start_time_list[i][j]) & (pupil_diameter['timestamp [ns]'] <= end_time_list[i][j])]
                 #fix -- AOI, j -- fixation group
                 index_list = subset.index
                 pupil_diameter.loc[index_list, 'aoi_column'] = str(int(fix))+ '_' + str(j)
-        
+
+        # Save the labelled pupil diameter data file
         pupil_diameter.to_csv(f"{pupil_data_folder[0]}/labelled_pupil.csv", index=False)
                 
-    
+    # Save the dictionary containing each participant's fixation data into .csv file
     csv_filename = pic + '_' + aoi_column + '_fixation_dict.csv'
     with open(csv_filename, 'w') as f:  
         w = csv.DictWriter(f, fixation_participant_dict.keys())
