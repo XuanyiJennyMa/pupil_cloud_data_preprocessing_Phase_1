@@ -79,11 +79,22 @@ Please click the .py file above for more detailed explanation of this script.
 
 ## [Change_foldername_timeseries.py](Change_foldername_timeseries.py)
 
-The pupil diameter data are saved inside "Timeseries Data" folder as raw data that can be downloaded from [Pupil Cloud][1]. Howev
+The pupil diameter data are saved inside "Timeseries Data" folder as raw data that can be downloaded from [Pupil Cloud][1]. The structure of the data is slightly different from the data from enrichment process as each "3d_eye_states.csv" file within the recording folder contains only one participant's pupil diameter data from the entile recording (with all reference pictures that the participant has read during the experiment). 
+
+The original folder names are very long as shown below:
+![Timeseries_data_folders_original_names](Timeseries_data_folders_original_names.png) 
+which is a combination of realworld time of the recording and the first part of its recording id.
+
+Although each recording has its unique id and the links between recording id and wearer can be found in the "sections.csv" fill, it will be much better and straigtforward if each folder name contains the wearer information as shown below:
+![Timeseries_data_folders_changed_names](Timeseries_data_folders_changed_names.png) 
+
+Please click the .py file above for more detailed explanation of this script. 
 
 ## [Step3_Label_pupil_diameter_with_aoi_section.py](Step3_Label_pupil_diameter_with_aoi_section.py)
 
+Pupil diameter data inside "3d_eye_states.csv" file are raw data from the entile recording. The differentiation between different manuscripts (reference pictures) and AOIs of each picture needs to be done. The approach adopted here is to find the start and end timestamps of each picture and AOI, and then label each row of the data accordingly in terms of the time. 
 
+Please click the .py file above for more detailed explanation of this script. 
 
 
 
