@@ -63,7 +63,9 @@ The fixation data we use here are the ones from enrichment process. Thus, each "
 
 ## [Addition_Step1_overlapped_aoi.py](Addition_Step1_overlapped_aoi.py)
 
-With the applied approach for AOI selection, the AOIs can only be highlighted into rectangular areas. For example, as shown in ![Overlappend AOIs](Overlapped_aois.png)
+With the applied approach for AOI selection, the AOIs can only be highlighted into rectangular areas. For example, as shown in the picture below: 
+![Overlappend AOIs](Overlapped_aois.png)
+There are 
 
 ## [Step2_Label_gaze_with_participant.py](Step2_Label_gaze_with_participant.py)
 
