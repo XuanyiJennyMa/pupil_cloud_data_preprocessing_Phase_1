@@ -143,4 +143,7 @@ def label_pupil_with_aoi(pic, multi_version_check, overlapped_aois, version):
         w.writerow(fixation_participant_dict)            
     return fixation_participant_dict
 
-
+# Take manuscript 1 as an example:
+label_pupil_with_aoi('Manuscript_1', false, false, 0)
+# There is only one version of AOIs for manuscript one, so both multi_version_check and overlapped_aois are set to false.
+# In this case, version can be set to any number as it won't affect the result. And I set it to 0. 
